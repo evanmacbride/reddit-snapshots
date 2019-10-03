@@ -11,16 +11,15 @@ export default ({ data }) => {
         <h1
           css={css`
             display: inline-block;
-            border-bottom: 1px solid;
           `}
         >
           Top Posts from Reddit
         </h1>
-        <article>
+        <section>
           <h2>The Latest</h2>
           <h3>{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h3>
           <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
-        </article>
+        </section>
         <h4>{data.allMarkdownRemark.totalCount - 1} Older Posts</h4>
         {data.allMarkdownRemark.edges.slice(1).map(({ node }) => (
           <div key={node.id}>
@@ -35,7 +34,7 @@ export default ({ data }) => {
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
-                {node.frontmatter.title}{" "}
+                {node.frontmatter.title}
               </h3>
               <p>{node.excerpt}</p>
             </Link>
