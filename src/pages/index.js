@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
+
 export default ({ data }) => {
   //console.log(data.allMarkdownRemark.edges[0])
   return (
@@ -13,29 +14,27 @@ export default ({ data }) => {
             display: inline-block;
           `}
         >
-          Top Posts from Reddit
+          The Latest
         </h1>
         <section>
-          <h2>The Latest</h2>
-          <h3>{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h3>
+          <h2>{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
         </section>
-        <h4>{data.allMarkdownRemark.totalCount - 1} Older Posts</h4>
+        <h2>{data.allMarkdownRemark.totalCount - 1} Older Posts</h2>
         {data.allMarkdownRemark.edges.slice(1).map(({ node }) => (
           <div key={node.id}>
             <Link
               to={node.fields.slug}
               css={css`
                 text-decoration: none;
-                color: inherit;
             `}>
-              <h3
+              <p
                 css={css`
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
                 {node.frontmatter.title}
-              </h3>
+              </p>
               <p>{node.excerpt}</p>
             </Link>
           </div>
