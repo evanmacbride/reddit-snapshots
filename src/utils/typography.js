@@ -29,7 +29,7 @@ const googleFonts = [
     ],
   },
   {
-    name: 'PT Sans',
+    name: 'Source Sans Pro',
     styles: [
       '400',
     ]
@@ -39,7 +39,8 @@ const googleFonts = [
 const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   a: {
     textDecoration: 'none',
-    color: '#ffc048'
+    color: '#d2dae2',
+
   },
   article: {
     display: 'flex',
@@ -49,11 +50,11 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     marginBottom: '0',
   },
   body: {
-    color: '#d2dae2',
+    color: '#808e9b',
     backgroundColor: '#1e272e',
   },
   'h1, h2, h3, h4': {
-    color: '#d2dae2',
+    color: '#ffc048',
     textTransform: 'uppercase',
   },
   h1: {
@@ -76,7 +77,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
 
 kirkhamTheme.baseFontSize = "16px"
 kirkhamTheme.baseLineHeight = 1.25
-kirkhamTheme.bodyFontFamily = ["PT Sans","sans-serif"]
+kirkhamTheme.bodyFontFamily = ["Source Sans Pro","sans-serif"]
 kirkhamTheme.googleFonts = googleFonts
 kirkhamTheme.headerFontFamily = ["Work Sans","sans-serif"]
 kirkhamTheme.headerWeight = "normal"
