@@ -40,7 +40,6 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   a: {
     textDecoration: 'none',
     color: '#d2dae2',
-
   },
   article: {
     display: 'flex',
