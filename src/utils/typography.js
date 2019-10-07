@@ -1,7 +1,7 @@
 import Typography from "typography"
 import kirkhamTheme from "typography-theme-kirkham"
 
-const googleFonts = [
+/*const googleFonts = [
   {
     name: 'Montserrat',
     styles: [
@@ -18,29 +18,51 @@ const googleFonts = [
       '700i',
     ],
   },
+]*/
+
+const googleFonts = [
+  {
+    name: 'Work Sans',
+    styles: [
+      '400',
+      '600',
+    ],
+  },
+  {
+    name: 'PT Sans',
+    styles: [
+      '400',
+    ]
+  }
 ]
 
 const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   a: {
     textDecoration: 'none',
-    color: '#9f392b'
+    color: '#ffc048'
   },
   article: {
     display: 'flex',
-    marginBottom: rhythm(1)
+    marginBottom: rhythm(1),
   },
   'article p': {
     marginBottom: '0',
   },
+  body: {
+    color: '#d2dae2',
+    backgroundColor: '#1e272e',
+  },
   'h1, h2, h3, h4': {
-    letterSpacing: '0.04rem',
-    textTransform: 'uppercase'
+    color: '#d2dae2',
+    textTransform: 'uppercase',
   },
   h1: {
-    fontWeight: '200'
+    fontWeight: '600',
+    letterSpacing: '0.07rem',
   },
   'h2, h3, h4': {
-    fontSize: '1rem'
+    fontSize: '1rem',
+    letterSpacing: '0.015rem',
   },
   img: {
     height: '4rem',
@@ -54,8 +76,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
 
 kirkhamTheme.baseFontSize = "16px"
 kirkhamTheme.baseLineHeight = 1.25
+kirkhamTheme.bodyFontFamily = ["PT Sans","sans-serif"]
 kirkhamTheme.googleFonts = googleFonts
-kirkhamTheme.headerFontFamily = ["Montserrat","sans-serif"]
+kirkhamTheme.headerFontFamily = ["Work Sans","sans-serif"]
 kirkhamTheme.headerWeight = "normal"
 kirkhamTheme.overrideStyles = overrideStyles
 kirkhamTheme.scaleRatio = 2

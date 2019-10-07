@@ -27,7 +27,7 @@ export default ({ children }) => {
       <Link to={`/`}>
         <h3
           css={css`
-            margin-bottom: ${rhythm(1)};
+            margin-bottom: ${rhythm(2)};
             display: inline-block;
             font-style: normal;
           `}

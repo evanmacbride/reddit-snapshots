@@ -12,15 +12,24 @@ export default ({ data }) => {
         <h1
           css={css`
             display: inline-block;
+            margin-bottom: ${rhythm(0.618)};
           `}
         >
           The Latest
         </h1>
         <section>
-          <h2>{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
+          <h3
+            css={css`
+              margin-bottom: ${rhythm(0.382)};
+            `}
+          >{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h3>
+          <div
+            css={css`
+              margin-bottom: ${rhythm(2)};
+            `}
+            dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
         </section>
-        <h2>{data.allMarkdownRemark.totalCount - 1} Older Posts</h2>
+        <h1>{data.allMarkdownRemark.totalCount - 1} Older Posts</h1>
         {data.allMarkdownRemark.edges.slice(1).map(({ node }) => (
           <div key={node.id}>
             <Link
