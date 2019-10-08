@@ -73,10 +73,10 @@ with open(mdFilename,'w',encoding='utf-8') as f:
             postSubreddit = post['data']['subreddit']
             postScore = str(post['data']['score'])
 
-            formattedInfo = ("<div>\nposted by " + "[" + postAuthor + "](" + "https://www.reddit.com/user/" +
-                postAuthor + ") in [" + postSubreddit + "](https://www.reddit.com/r/" +
-                postSubreddit + "). " + postScore + " points. " + postComments +
-                " [comments](https://www.reddit.com" + postPermalink + ").\n</div>\n")
+            #formattedInfo = ("<div>\n | posted by " + "[" + postAuthor + "](" + "https://www.reddit.com/user/" +
+            #    postAuthor + ") in [" + postSubreddit + "](https://www.reddit.com/r/" +
+            #    postSubreddit + ") | " + postScore + " points | " + postComments +
+            #    " [comments](https://www.reddit.com" + postPermalink + ")\n</div>\n")
 
             thumbnailHTML = ""
             if postThumbnail:
@@ -86,9 +86,9 @@ with open(mdFilename,'w',encoding='utf-8') as f:
             linkHTML = "<a href='" + postUrl + "'>" + postTitle + "</a> (" + postUrl.split('/')[2].replace('www.','') + ")"
             infoHTML = (
                 "<p>" +
-                    "posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
-                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a>. " +
-                    postScore + " points. " + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>." +
+                    " posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
+                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a> | " +
+                    postScore + " points | " + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>" +
                 "</p>"
                 )
             linkInfoWrapHTML = (
