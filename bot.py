@@ -83,12 +83,13 @@ with open(mdFilename,'w',encoding='utf-8') as f:
                 thumbnailHTML = (
                     "<a href='" + postUrl + "'><img src='" + postThumbnail + "' alt='thumbnail for link to post'></a>"
                     )
+            dividerSpan = "<span class='divider'> | </span>"
             linkHTML = "<a href='" + postUrl + "'>" + postTitle + "</a> (" + postUrl.split('/')[2].replace('www.','') + ")"
             infoHTML = (
                 "<p>" +
                     " posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
-                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a> | " +
-                    postScore + " points | " + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>" +
+                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a>" + dividerSpan +
+                    postScore + " points" + dividerSpan + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>" +
                 "</p>"
                 )
             linkInfoWrapHTML = (

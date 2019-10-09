@@ -56,6 +56,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     color: '#ffc048',
     textTransform: 'uppercase',
   },
+  '.divider': {
+    color: '#d2dae2',
+  },
   h1: {
     fontWeight: '600',
     letterSpacing: '0.07rem',
