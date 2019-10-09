@@ -68,12 +68,18 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     letterSpacing: '0.015rem',
   },
   img: {
-    height: '4rem',
-    maxWidth: '120px',
-    objectFit: 'cover',
+    height: '64px',
+    maxWidth: 'none',
     marginBottom: 'none',
+    objectFit: 'cover',
     paddingRight: '4px',
-    width: '6.47rem',
+    width: '104px',
+  },
+  svg: {
+    backgroundColor: 'black',
+    fill: '#d2dae2',
+    marginRight: '4px',
+    width: '104px'
   }
 })
 
