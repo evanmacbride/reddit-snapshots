@@ -51,6 +51,7 @@ seenAuthors = []
 response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
 with open(mdFilename,'w',encoding='utf-8') as f:
     f.write("---\ntitle: 'Hot Posts for " + titleTime + "'\ndate: '" + now + "'\n---\n")
+    f.write("<ul>\n")
     for post in response.json()['data']['children']:
         if not (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']) and (
             post['data']['url'] not in seenLinks and post['data']['author'] not in seenAuthors):
@@ -95,11 +96,6 @@ with open(mdFilename,'w',encoding='utf-8') as f:
             postSubreddit = post['data']['subreddit']
             postScore = str(post['data']['score'])
 
-            #formattedInfo = ("<div>\n | posted by " + "[" + postAuthor + "](" + "https://www.reddit.com/user/" +
-            #    postAuthor + ") in [" + postSubreddit + "](https://www.reddit.com/r/" +
-            #    postSubreddit + ") | " + postScore + " points | " + postComments +
-            #    " [comments](https://www.reddit.com" + postPermalink + ")\n</div>\n")
-
             thumbnailHTML = ""
             if postThumbnail:
                 thumbnailHTML = (
@@ -108,11 +104,9 @@ with open(mdFilename,'w',encoding='utf-8') as f:
             dividerSpan = "<span class='divider'> | </span>"
             linkHTML = "<a href='" + postUrl + "'>" + postTitle + "</a> (" + postUrl.split('/')[2].replace('www.','') + ")"
             infoHTML = (
-                "<p>" +
                     " posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
                     "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a>" + dividerSpan +
-                    postScore + " points" + dividerSpan + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>" +
-                "</p>"
+                    postScore + " points" + dividerSpan + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>"
                 )
             linkInfoWrapHTML = (
                 "<div>" +
@@ -120,13 +114,14 @@ with open(mdFilename,'w',encoding='utf-8') as f:
                 "</div>"
             )
             postHTML = (
-                "<article>" +
+                "<li>" +
                     thumbnailHTML + linkInfoWrapHTML +
-                "</article>"
+                "</li>"
             )
             f.write(postHTML + "\n\n")
             postCount += 1
             if postCount > MULTI_POST_LIMIT:
                 break
+    f.write("</ul>\n")
 
 f.close()
