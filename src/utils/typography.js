@@ -24,7 +24,6 @@ const googleFonts = [
   {
     name: 'Work Sans',
     styles: [
-      '400',
       '600',
     ],
   },
@@ -32,6 +31,7 @@ const googleFonts = [
     name: 'Source Sans Pro',
     styles: [
       '400',
+      '700',
     ]
   }
 ]
@@ -41,13 +41,6 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     textDecoration: 'none',
     color: '#d2dae2',
   },
-  article: {
-    display: 'flex',
-    marginBottom: rhythm(1),
-  },
-  'article p': {
-    marginBottom: '0',
-  },
   body: {
     color: '#808e9b',
     backgroundColor: '#1e272e',
@@ -55,6 +48,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   'h1, h2, h3, h4': {
     color: '#ffc048',
     textTransform: 'uppercase',
+  },
+  '.divider': {
+    color: '#d2dae2',
   },
   h1: {
     fontWeight: '600',
@@ -65,12 +61,29 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     letterSpacing: '0.015rem',
   },
   img: {
-    height: '4rem',
-    maxWidth: '120px',
-    objectFit: 'cover',
+    maxWidth: 'none',
     marginBottom: 'none',
-    paddingRight: '4px',
-    width: '6.47rem',
+    objectFit: 'cover',
+  },
+  'img, svg': {
+    height: '76px',
+    width: '101px',
+  },
+  li: {
+    display: 'flex',
+    marginBottom: rhythm(0.4),
+  },
+  'li > div': {
+    borderTop: '1px solid #485460',
+    padding: '2px 5px 0 5px',
+  },
+  svg: {
+    backgroundColor: '#0008',
+    fill: '#d2dae2',
+  },
+  ul: {
+    marginLeft: '0',
+    paddingLeft: '0',
   }
 })
 

@@ -19,8 +19,7 @@ export default ({ children }) => {
     <div
       css={css`
         margin: 0 auto;
-        max-width: 600px;
-        padding: 4px;
+        max-width: 610px;
         padding-top: ${rhythm(1)};
       `}
     >
@@ -28,20 +27,13 @@ export default ({ children }) => {
         <h3
           css={css`
             margin-bottom: ${rhythm(2)};
-            display: inline-block;
+            display: block;
             font-style: normal;
+            padding-left: 5px;
           `}
         >
           {data.site.siteMetadata.title}
         </h3>
-      </Link>
-      <Link
-        to={`/about/`}
-        css={css`
-          float: right;
-        `}
-      >
-        About
       </Link>
       {children}
     </div>
