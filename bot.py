@@ -83,7 +83,7 @@ with open(mdFilename,'w',encoding='utf-8') as f:
             #    postThumbnail = post['data']['thumbnail']
             #    formattedThumbnail = "[![alt text](" + postThumbnail + " 'Thumbnail image for link')](" + postUrl + ")"
             else:
-                postThumbnail = "<img src='" + post['data']['thumbnail'] + "' alt='link thumbnail'"
+                postThumbnail = "<img src='" + post['data']['thumbnail'] + "' alt='link thumbnail'>"
 
             formattedThumbnail = "<a href='" + postUrl + "'>" + postThumbnail + "</a>"
             formattedLink = "<div>\n" + "[" + postTitle + "]" + "(" + postUrl + ")\n</div>\n"
@@ -101,12 +101,12 @@ with open(mdFilename,'w',encoding='utf-8') as f:
                 thumbnailHTML = (
                     "<a href='" + postUrl + "'>" + postThumbnail + "</a>"
                     )
-            dividerSpan = "<span class='divider'> | </span>"
-            linkHTML = "<a href='" + postUrl + "'>" + postTitle + "</a> (" + postUrl.split('/')[2].replace('www.','') + ")"
+            #dividerSpan = "<span class='divider'> | </span>"
+            linkHTML = "<div class='linkTitle'><a href='" + postUrl + "'>" + postTitle + "</a></div>(" + postUrl.split('/')[2].replace('www.','') + ")"
             infoHTML = (
                     " posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
-                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a>" + dividerSpan +
-                    postScore + " points" + dividerSpan + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>"
+                    "in " + "<a href='https://www.reddit.com/r/" + postSubreddit + "'>" + postSubreddit + "</a> " +
+                    postScore + " points & " + postComments + " <a href='https://www.reddit.com" + postPermalink +"'>comments</a>"
                 )
             linkInfoWrapHTML = (
                 "<div>" +
