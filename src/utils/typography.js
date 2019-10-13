@@ -77,7 +77,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     borderTop: '1px solid #485460',
     display: 'block',
     fontSize: '0.875rem',
-    padding: '4px 2px 0 7px',
+    padding: '2px 4px 0 6px',
     width: '100%',
   },
   '.linkTitle': {
