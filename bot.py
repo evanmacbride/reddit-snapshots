@@ -38,9 +38,8 @@ multiHot = techMulti + "/hot"
 
 d = datetime.utcnow()
 now = d.strftime("%Y-%m-%dT%H:%M:%S")
-titleTime = d.strftime("%b %-d, %Y at %l:%M%p")
-#absPath = "/home/chrx/Projects/reddit-bot/"
-#mdFilename = absPath + now + "-post.md"
+#titleTime = d.strftime("%b %-d, %Y at %l:%M%p")
+titleTime = d.strftime("%D %l:%M%p UTC")
 mdFilename = postPath + now + "-post.md"
 
 postCount = 1
@@ -50,7 +49,7 @@ seenAuthors = []
 # TODO: Keep trying if no response status is not 200
 response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
 with open(mdFilename,'w',encoding='utf-8') as f:
-    f.write("---\ntitle: 'Hot Posts for " + titleTime + "'\ndate: '" + now + "'\n---\n")
+    f.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
     f.write("<ul>\n")
     for post in response.json()['data']['children']:
         if not (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']) and (

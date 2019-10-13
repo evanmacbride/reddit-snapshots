@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `u/evnbd's Reddit Digest`,
+    title: `Reddit Snapshots`,
   },
   plugins: [
     {
