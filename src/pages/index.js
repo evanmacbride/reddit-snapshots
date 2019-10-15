@@ -18,6 +18,7 @@ export default ({ data }) => {
             css={css`
               display: inline-block;
               margin-bottom: ${rhythm(0.618)};
+              border-bottom: 1px solid #d2dae2;
             `}
           >
             The Latest
@@ -31,6 +32,7 @@ export default ({ data }) => {
           <section>
             <div
               css={css`
+                border-top: 2px solid #00d8d6;
                 margin-bottom: ${rhythm(2)};
               `}
               dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />

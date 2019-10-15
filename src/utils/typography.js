@@ -24,6 +24,7 @@ const googleFonts = [
   {
     name: 'Work Sans',
     styles: [
+      '500',
       '600',
     ],
   },
@@ -46,7 +47,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     backgroundColor: '#1e272e',
   },
   'h1, h2, h3, h4': {
-    color: '#ffc048',
+    color: '#34e7e4',
     textTransform: 'uppercase',
   },
   '.divider': {
@@ -71,7 +72,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   },
   li: {
     display: 'flex',
-    marginBottom: rhythm(0.4),
+    marginBottom: rhythm(0.2),
   },
   'li > div': {
     borderTop: '1px solid #485460',
