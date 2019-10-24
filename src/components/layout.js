@@ -19,17 +19,19 @@ export default ({ children }) => {
     <div
       css={css`
         margin: 0 auto;
-        max-width: 610px;
-        padding-top: ${rhythm(1)};
+        /*max-width: 610px;*/
+        padding-top: ${rhythm(0.5)};
       `}
     >
       <Link to={`/`}>
         <h3
           css={css`
-            margin-bottom: ${rhythm(2)};
+            border-bottom: 5px solid #d2dae2;
+            border-top: 5px solid #d2dae2;
             display: block;
-            font-style: normal;
-            padding-left: 5px;
+            font-weight: 600;
+            margin-bottom: ${rhythm(1)};
+            padding: 5px 8px;
           `}
         >
           {data.site.siteMetadata.title}

@@ -8,7 +8,11 @@ export default ({ data }) => {
   //console.log(data.allMarkdownRemark.edges[0])
   return (
     <Layout>
-      <div>
+      <div
+        css={css`
+          margin: auto;
+          max-width: 610px;
+        `}>
         <header
           css={css`
             padding-left: 5px;
@@ -18,13 +22,13 @@ export default ({ data }) => {
             css={css`
               display: inline-block;
               margin-bottom: ${rhythm(0.618)};
-              border-bottom: 1px solid #d2dae2;
             `}
           >
             The Latest
           </h1>
             <h3
               css={css`
+                color: #d2dae2a8;
                 margin-bottom: ${rhythm(0.382)};
               `}
             >{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h3>
