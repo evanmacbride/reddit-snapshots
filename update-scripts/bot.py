@@ -3,7 +3,7 @@ import requests.auth
 import os
 from datetime import datetime
 
-MULTI_POST_LIMIT = 10
+MULTI_POST_LIMIT = 25
 
 # Get secrets from environment variables
 username = os.environ['YOUR_REDDIT_USERNAME']
@@ -23,18 +23,21 @@ access = response.json()['access_token']
 # Now, query the API
 headers = {"Authorization": "bearer " + access, "User-Agent": agent}
 
-techSubs = [
+sciTechSubs = [
     "technology","tech","raspberry_pi","hardware","hacking","3dprinting",
-    "functionalprint","gadgets","netsec","buildapc","privacy","linux"
+    "functionalprint","gadgets","netsec","buildapc","privacy","linux",
+    "compsci","space","environment","askscience","biology",
+    "chemicalreactiongifs","futurology","naturewasmetal","nasa"
 ]
 
-techMulti = "r/"
+sciTechMulti = "r/"
 
-for sub in techSubs:
-    techMulti += sub + "+"
+for sub in sciTechSubs:
+    sciTechMulti += sub + "+"
 
-techMulti = techMulti[:-1]
-multiHot = techMulti + "/hot"
+sciTechMulti = sciTechMulti[:-1]
+#multiHot = sciTechMulti + "/hot"
+multiTop = sciTechMulti + "/top?t=day"
 
 d = datetime.utcnow()
 now = d.strftime("%Y-%m-%dT%H:%M:%S")
@@ -47,7 +50,8 @@ seenLinks = []
 seenAuthors = []
 
 # TODO: Keep trying if no response status is not 200
-response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
+#response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
+response = requests.get("https://oauth.reddit.com/" + multiTop, headers=headers)
 with open(mdFilename,'w',encoding='utf-8') as f:
     f.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
     f.write("<ul>\n")
@@ -77,10 +81,6 @@ with open(mdFilename,'w',encoding='utf-8') as f:
     <path d='M22.78,15.37l-5.4,5.4-4-4a1,1,0,0,0-1.41,0L5.92,22.9v2.83l6.79-6.79L16,22.18l-3.75,3.75H15l8.45-8.45L30,24V21.18l-5.81-5.81A1,1,0,0,0,22.78,15.37Z'></path>
 </svg>""")
 
-            #elif post['data']['thumbnail'] not in ["","default","self","image"]:
-            #elif post['data']['thumbnail'] not in ["self","","default","image"]:
-            #    postThumbnail = post['data']['thumbnail']
-            #    formattedThumbnail = "[![alt text](" + postThumbnail + " 'Thumbnail image for link')](" + postUrl + ")"
             else:
                 postThumbnail = "<img src='" + post['data']['thumbnail'] + "' alt='link thumbnail'>"
 
@@ -100,7 +100,6 @@ with open(mdFilename,'w',encoding='utf-8') as f:
                 thumbnailHTML = (
                     "<a href='" + postUrl + "'>" + postThumbnail + "</a>"
                     )
-            #dividerSpan = "<span class='divider'> | </span>"
             linkHTML = "<div class='linkTitle'><a href='" + postUrl + "'>" + postTitle + "</a></div>(" + postUrl.split('/')[2].replace('www.','') + ")"
             infoHTML = (
                     " posted by " + "<a href='https://www.reddit.com/user/" + postAuthor + "'>" + postAuthor + "</a> " +
