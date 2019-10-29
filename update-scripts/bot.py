@@ -30,6 +30,10 @@ sciTechSubs = [
     "chemicalreactiongifs","futurology","naturewasmetal","nasa"
 ]
 
+funSubs = ["softwaregore","geek","InternetIsBeautiful","alternativeart",
+    "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
+    "retrofuturism"]
+
 sciTechMulti = "r/"
 
 for sub in sciTechSubs:
