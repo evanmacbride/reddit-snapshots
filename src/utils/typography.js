@@ -47,7 +47,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     backgroundColor: '#1e272e',
   },
   'h1, h2, h3, h4': {
-    color: '#34e7e4',
+    color: '#d2dae2',
     textTransform: 'uppercase',
   },
   '.divider': {
@@ -80,6 +80,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     fontSize: '0.875rem',
     padding: '2px 4px 0 6px',
     width: '100%',
+  },
+  'li:first-of-type > div': {
+    borderTop: 'none',
   },
   '.linkTitle': {
     fontWeight: 700,

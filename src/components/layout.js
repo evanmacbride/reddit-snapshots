@@ -26,12 +26,14 @@ export default ({ children }) => {
       <Link to={`/`}>
         <h3
           css={css`
-            border-bottom: 5px solid #d2dae2;
-            border-top: 5px solid #d2dae2;
+            background-color: #d2dae2;
+            border-bottom: 4.5px solid #34e7e4;
+            border-top: 4.5px solid #34e7e4;
+            color: #1e272e;
             display: block;
             font-weight: 600;
-            margin-bottom: ${rhythm(1)};
-            padding: 5px 8px;
+            margin-bottom: 1.25rem;
+            padding: 6px 5px;
           `}
         >
           {data.site.siteMetadata.title}
