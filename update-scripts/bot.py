@@ -3,7 +3,7 @@ import requests.auth
 import os
 from datetime import datetime
 
-MULTI_POST_LIMIT = 25
+MULTI_POST_LIMIT = 9
 
 # Get secrets from environment variables
 username = os.environ['YOUR_REDDIT_USERNAME']
@@ -52,6 +52,14 @@ mdFilename = postPath + now + "-post.md"
 postCount = 1
 seenLinks = []
 seenAuthors = []
+
+featuredExists = False
+try:
+    alreadyFeatured = open("featured.json","r+")
+    featuredExists = True
+    print("Featured exists!")
+except IOError:
+    alreadyFeatured = open("featured.json","w")
 
 # TODO: Keep trying if no response status is not 200
 #response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
