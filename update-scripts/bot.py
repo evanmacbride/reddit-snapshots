@@ -13,7 +13,7 @@ clientSecret = os.environ['YOUR_CLIENT_SECRET']
 postPath = os.environ['PATH_TO_PROJECT_DIR'] + "/src/pages/posts/"
 
 # First, get the access token
-agent = "Trend Finder by u/evnbd"
+agent = "Reddit Snapshots by u/evnbd"
 client_auth = requests.auth.HTTPBasicAuth(clientID, clientSecret)
 post_data = {"grant_type": "password", "username": username, "password": password}
 headers = {"User-Agent": agent}
