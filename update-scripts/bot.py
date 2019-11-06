@@ -53,6 +53,10 @@ postCount = 1
 seenLinks = []
 seenAuthors = []
 
+# If an alreadyFeatured file exists, we'll use it to check if links have already
+# been posted. If the file doesn't exist, we'll create it. Then, we'll save
+# urls of links that have been posted to the website to make sure we're not
+# posting the same link twice.
 featuredExists = False
 try:
     alreadyFeatured = open("featured.json","r+")
