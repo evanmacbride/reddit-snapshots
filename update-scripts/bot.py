@@ -13,7 +13,7 @@ clientID = os.environ['YOUR_CLIENT_ID']
 clientSecret = os.environ['YOUR_CLIENT_SECRET']
 postPath = os.environ['PATH_TO_PROJECT_DIR'] + "/src/pages/posts/"
 jsonPath = os.environ['PATH_TO_PROJECT_DIR'] + "/update-scripts/"
-
+#
 # First, get the access token
 agent = "Reddit Snapshots by u/evnbd"
 client_auth = requests.auth.HTTPBasicAuth(clientID, clientSecret)
