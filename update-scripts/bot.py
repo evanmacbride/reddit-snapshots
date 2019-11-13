@@ -151,7 +151,7 @@ with open(mdFilename,'w',encoding='utf-8') as md:
 
 md.close()
 
-linksDict = "links":seenLinks
+linksDict = {"links":seenLinks}
 with open("featured.json","w") as featuredFile:
     #prevFeaturedLinks = json.load(featuredFile)
     json.dump(linksDict,featuredFile)
