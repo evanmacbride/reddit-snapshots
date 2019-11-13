@@ -11,6 +11,7 @@ password = os.environ['YOUR_REDDIT_PASSWORD']
 clientID = os.environ['YOUR_CLIENT_ID']
 clientSecret = os.environ['YOUR_CLIENT_SECRET']
 postPath = os.environ['PATH_TO_PROJECT_DIR'] + "/src/pages/posts/"
+jsonPath = os.environ['PATH_TO_PROJECT_DIR'] + "/update-scripts/"
 
 # First, get the access token
 agent = "Reddit Snapshots by u/evnbd"
@@ -63,7 +64,7 @@ prevFeaturedLinks = {}
     #featuredFile = open("featured.json","r+")
     #featuredExists = True
     #print("Featured exists!")
-with open("featured.json","r") as featuredFile:
+with open(jsonPath + "featured.json","r") as featuredFile:
     prevFeaturedLinks = json.load(featuredFile)
     featuredExists = True
     featuredFile.close()
@@ -152,6 +153,6 @@ with open(mdFilename,'w',encoding='utf-8') as md:
 md.close()
 
 linksDict = {"links":seenLinks}
-with open("featured.json","w") as featuredFile:
+with open(jsonPath + "featured.json","w") as featuredFile:
     #prevFeaturedLinks = json.load(featuredFile)
     json.dump(linksDict,featuredFile)
