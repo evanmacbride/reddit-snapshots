@@ -53,24 +53,35 @@ postCount = 1
 seenLinks = []
 seenAuthors = []
 
-# If an alreadyFeatured file exists, we'll use it to check if links have already
+# If a featuredFile file exists, we'll use it to check if links have already
 # been posted. If the file doesn't exist, we'll create it. Then, we'll save
 # urls of links that have been posted to the website to make sure we're not
 # posting the same link twice.
 featuredExists = False
-try:
-    alreadyFeatured = open("featured.json","r+")
+prevFeaturedLinks = {}
+#try:
+    #featuredFile = open("featured.json","r+")
+    #featuredExists = True
+    #print("Featured exists!")
+with open("featured.json","r") as featuredFile:
+    prevFeaturedLinks = json.load(featuredFile)
     featuredExists = True
-    print("Featured exists!")
-except IOError:
-    alreadyFeatured = open("featured.json","w")
+    featuredFile.close()
+#except IOError:
+    #featuredFile = open("featured.json","w")
+#    with open("featured.json","w") as featuredFile:
+#        prevFeaturedLinks = json.load(featuredFile)
+
+if featuredExists:
+    for url in prevFeaturedLinks['links']:
+        seenLinks.append(url)
 
 # TODO: Keep trying if no response status is not 200
 #response = requests.get("https://oauth.reddit.com/" + multiHot, headers=headers)
 response = requests.get("https://oauth.reddit.com/" + multiTop, headers=headers)
-with open(mdFilename,'w',encoding='utf-8') as f:
-    f.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
-    f.write("<ul>\n")
+with open(mdFilename,'w',encoding='utf-8') as md:
+    md.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
+    md.write("<ul>\n")
     for post in response.json()['data']['children']:
         if not (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']) and (
             post['data']['url'] not in seenLinks and post['data']['author'] not in seenAuthors):
@@ -132,10 +143,15 @@ with open(mdFilename,'w',encoding='utf-8') as f:
                     thumbnailHTML + linkInfoWrapHTML +
                 "</li>"
             )
-            f.write(postHTML + "\n\n")
+            md.write(postHTML + "\n\n")
             postCount += 1
             if postCount > MULTI_POST_LIMIT:
                 break
-    f.write("</ul>\n")
+    md.write("</ul>\n")
 
-f.close()
+md.close()
+
+linksDict = "links":seenLinks
+with open("featured.json","w") as featuredFile:
+    #prevFeaturedLinks = json.load(featuredFile)
+    json.dump(linksDict,featuredFile)
