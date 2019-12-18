@@ -22,10 +22,10 @@ import kirkhamTheme from "typography-theme-kirkham"
 
 const googleFonts = [
   {
-    name: 'Work Sans',
+    name: 'Oswald',
     styles: [
-      '500',
-      '600',
+      '300',
+      '400',
     ],
   },
   {
@@ -49,17 +49,17 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   'h1, h2, h3, h4': {
     color: '#d2dae2',
     textTransform: 'uppercase',
+    letterSpacing: '0.085em',
   },
   '.divider': {
     color: '#d2dae2',
   },
   h1: {
-    fontWeight: '600',
-    letterSpacing: '0.07rem',
+    fontWeight: '300',
   },
   'h2, h3, h4': {
     fontSize: '1rem',
-    letterSpacing: '0.015rem',
+    fontWeight: '400',
   },
   img: {
     maxWidth: 'none',
@@ -102,7 +102,7 @@ kirkhamTheme.baseFontSize = "16px"
 kirkhamTheme.baseLineHeight = 1.25
 kirkhamTheme.bodyFontFamily = ["Source Sans Pro","sans-serif"]
 kirkhamTheme.googleFonts = googleFonts
-kirkhamTheme.headerFontFamily = ["Work Sans","sans-serif"]
+kirkhamTheme.headerFontFamily = ["Oswald","sans-serif"]
 kirkhamTheme.headerWeight = "normal"
 kirkhamTheme.overrideStyles = overrideStyles
 kirkhamTheme.scaleRatio = 2

@@ -36,7 +36,7 @@ export default ({ data }) => {
           <section>
             <div
               css={css`
-                border-top: 2px solid #00d8d6;
+                border-top: 1px solid #00d8d6;
                 margin-bottom: ${rhythm(2)};
               `}
               dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />

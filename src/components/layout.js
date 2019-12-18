@@ -19,20 +19,16 @@ export default ({ children }) => {
     <div
       css={css`
         margin: 0 auto;
-        /*max-width: 610px;*/
+        max-width: 610px;
         padding-top: ${rhythm(0.5)};
       `}
     >
       <Link to={`/`}>
         <h3
           css={css`
-            background-color: #d2dae2;
-            border-bottom: 4.5px solid #34e7e4;
-            border-top: 4.5px solid #34e7e4;
-            color: #1e272e;
+            color: #00d8d6;
             display: block;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
+            margin-bottom: 2.5rem;
             padding: 6px 5px;
           `}
         >
