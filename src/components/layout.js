@@ -21,20 +21,28 @@ export default ({ children }) => {
         margin: 0 auto;
         max-width: 610px;
         padding-top: ${rhythm(0.5)};
+
       `}
     >
-      <Link to={`/`}>
-        <h3
-          css={css`
-            color: #00d8d6;
-            display: block;
-            margin-bottom: 2.5rem;
-            padding: 6px 5px;
-          `}
-        >
-          {data.site.siteMetadata.title}
-        </h3>
-      </Link>
+      <nav
+        css={css`
+          background-color: #0008;
+          display: block;
+          margin-bottom: 2.5rem;
+          padding: 8px 5px;
+        `}
+      >
+        <Link to={`/`}>
+          <h3
+            css={css`
+              color: #00d8d6;
+              margin-bottom: 0;
+            `}
+          >
+            {data.site.siteMetadata.title}
+          </h3>
+        </Link>
+      </nav>
       {children}
     </div>
     )
