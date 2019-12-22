@@ -26,7 +26,7 @@ export default ({ children }) => {
     >
       <nav
         css={css`
-          background-color: #0008;
+          background-color: #000000bd;
           display: block;
           margin-bottom: 2.5rem;
           padding: 8px 5px;
