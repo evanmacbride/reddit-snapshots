@@ -61,6 +61,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     fontSize: '1rem',
     fontWeight: '400',
   },
+  h2: {
+    paddingLeft: '5px',
+  },
   img: {
     maxWidth: 'none',
     marginBottom: 'none',
