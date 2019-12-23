@@ -91,13 +91,14 @@ sciTechResponse = requests.get("https://oauth.reddit.com/" + sciTechTop, headers
 devResponse = requests.get("https://oauth.reddit.com/" + devTop, headers=headers)
 funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers)
 
-responses = [(sciTechResponse, SCI_TECH_LIMIT), (devResponse, DEV_LIMIT),
-    (funResponse, FUN_LIMIT)]
+responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Dev", DEV_LIMIT),
+    (funResponse, "Fun", FUN_LIMIT)]
 with open(mdFilename,'w',encoding='utf-8') as md:
     md.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
     md.write("<ul>\n")
-    for resp,limit in responses:
+    for resp,sectionTitle,limit in responses:
         postCount = 1
+        md.write("<h2>" + sectionTitle + "<h2>" + "\n\n")
         for post in resp.json()['data']['children']:
             if not (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']) and (
                 post['data']['url'] not in seenLinks and post['data']['author'] not in seenAuthors):
