@@ -98,7 +98,7 @@ with open(mdFilename,'w',encoding='utf-8') as md:
     md.write("<ul>\n")
     for resp,sectionTitle,limit in responses:
         postCount = 1
-        md.write("<h2>" + sectionTitle + "<h2>" + "\n\n")
+        md.write("<h2>" + sectionTitle + "</h2>" + "\n\n")
         for post in resp.json()['data']['children']:
             if not (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']) and (
                 post['data']['url'] not in seenLinks and post['data']['author'] not in seenAuthors):
