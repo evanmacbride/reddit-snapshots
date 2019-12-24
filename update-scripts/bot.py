@@ -4,8 +4,8 @@ import os
 import json
 from datetime import datetime
 
-SCI_TECH_LIMIT = 9
-DEV_LIMIT = 6
+SCI_TECH_LIMIT = 7
+DEV_LIMIT = 5
 FUN_LIMIT = 3
 
 # Get secrets from environment variables
