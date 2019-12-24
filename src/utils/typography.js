@@ -57,12 +57,17 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   h1: {
     fontWeight: '300',
   },
-  'h2, h3, h4': {
+  'h3, h4': {
     fontSize: '1rem',
     fontWeight: '400',
   },
   h2: {
-    paddingLeft: '5px',
+    borderTop: '1px solid #00d8d6',
+    fontSize: '1.618rem',
+    fontWeight: '300',
+    lineHeight: '1',
+    padding: '6px 5px 10px 5px',
+    marginBottom: '0'
   },
   img: {
     maxWidth: 'none',
@@ -84,9 +89,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     padding: '2px 4px 0 6px',
     width: '100%',
   },
-  'li:first-of-type > div': {
-    borderTop: 'none',
-  },
+  //'li:first-of-type > div': {
+  //  borderTop: 'none',
+  //},
   '.linkTitle': {
     fontWeight: 700,
     fontSize: '1rem',
