@@ -93,6 +93,13 @@ funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers
 
 responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Developer", DEV_LIMIT),
     (funResponse, "Etcetera", FUN_LIMIT)]
+
+# TODO: Create Post class that will store attributes from responses. Load Post
+# objects into a heapq sorted by postScore. When evaluating Posts to include in
+# a snapshot, if a given Post's subreddit is already represented, halve that
+# Post's postScore, mark its boolean "halved" property to true, then add the
+# Post back to the heapq. Do not halve Posts more than once. If halved is true,
+# add the Post to the snapshot without sending it back to the heapq again.
 with open(mdFilename,'w',encoding='utf-8') as md:
     md.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
     md.write("<ul>\n")
