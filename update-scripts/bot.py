@@ -41,7 +41,7 @@ devSubs = [
 
 funSubs = ["softwaregore","geek","InternetIsBeautiful","alternativeart",
     "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
-    "retrofuturism"]
+    "retrofuturism","movies","television","MovieDetails"]
 
 sciTechMulti = "r/"
 devMulti = "r/"
@@ -91,8 +91,8 @@ sciTechResponse = requests.get("https://oauth.reddit.com/" + sciTechTop, headers
 devResponse = requests.get("https://oauth.reddit.com/" + devTop, headers=headers)
 funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers)
 
-responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Dev", DEV_LIMIT),
-    (funResponse, "Fun", FUN_LIMIT)]
+responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Developer", DEV_LIMIT),
+    (funResponse, "Etcetera", FUN_LIMIT)]
 with open(mdFilename,'w',encoding='utf-8') as md:
     md.write("---\ntitle: '" + titleTime + " Snapshot'\ndate: '" + now + "'\n---\n")
     md.write("<ul>\n")
