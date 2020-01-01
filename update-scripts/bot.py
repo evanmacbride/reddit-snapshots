@@ -3,7 +3,7 @@ import requests.auth
 import os
 import json
 from datetime import datetime
-from .post import Post
+from post import Post
 
 # The maximum number of posts for each subsection of a snapshot
 SCI_TECH_LIMIT = 7
