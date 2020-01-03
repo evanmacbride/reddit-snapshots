@@ -27,7 +27,9 @@ export default ({ children }) => {
       <nav
         css={css`
           background-color: #000000bd;
-          display: block;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: space-between;
           margin-bottom: 2.5rem;
           padding: 8px 5px;
         `}
@@ -42,6 +44,32 @@ export default ({ children }) => {
             {data.site.siteMetadata.title}
           </h3>
         </Link>
+        <span
+          css={css`
+            display: flex;
+            flex-flow: row wrap;
+          `}
+        >
+          <Link to={`/about`}>
+            <h3
+              css={css`
+                margin-bottom: 0;
+                padding-right: 0.45em;
+              `}
+            >
+              About
+            </h3>
+          </Link>
+          <Link to={`/archive`}>
+            <h3
+              css={css`
+                margin-bottom: 0;
+              `}
+            >
+              Archive
+            </h3>
+          </Link>
+        </span>
       </nav>
       {children}
     </div>
