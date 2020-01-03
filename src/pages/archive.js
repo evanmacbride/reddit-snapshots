@@ -24,9 +24,8 @@ export default ({ data }) => {
               margin-bottom: ${rhythm(0.618)};
             `}
           >
-            Archive
+            Snapshot Archive
           </h1>
-          <h3>{data.allMarkdownRemark.totalCount - 1} Snapshots</h3>
         </header>
         {data.allMarkdownRemark.edges.slice(1).map(({ node }) => (
           <div key={node.id}>
@@ -37,12 +36,11 @@ export default ({ data }) => {
             `}>
               <p
                 css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
+                  margin-bottom: ${rhythm(1)};
                 `}
               >
                 {node.frontmatter.title}
               </p>
-              <p>{node.excerpt}</p>
             </Link>
           </div>
         ))}
