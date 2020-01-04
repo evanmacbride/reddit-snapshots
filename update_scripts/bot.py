@@ -115,9 +115,6 @@ for resp,sectionTitle,limit in responses:
         # Ignore stickied posts, NSFW posts, and spoilers
         if (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']):
             continue
-        # Ignore reposts, crossposts, and being overrun by powerusers
-        if (post['data']['url'] in seenLinks or post['data']['author'] in seenAuthors):
-            continue
         postSubreddit = post['data']['subreddit']
         if not (subData.get(postSubreddit)):
             subDataResponse = requests.get("https://oauth.reddit.com/" +
@@ -140,6 +137,10 @@ with open(mdFilename,'w',encoding='utf-8') as md:
         postCount = 1
         md.write("<h2>" + sectionTitle + "</h2>" + "\n\n")
         for post in heap:
+            # Ignore reposts, crossposts, and being overrun by powerusers
+            if (post.url in seenLinks or post.author in seenAuthors):
+                hq.heappop(heap)
+                continue
             html = hq.heappop(heap).getHTML()
             md.write(html + "\n\n")
             postCount += 1
