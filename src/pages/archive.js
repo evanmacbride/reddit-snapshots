@@ -52,20 +52,16 @@ export const query = graphql`
   query {
     allMarkdownRemark (sort: {
       fields: [frontmatter___date],
-      order: DESC}) {
-      totalCount
+      order: DESC}, limit: 20, skip: 0) {
       edges {
         node {
           id
           frontmatter {
             title
-            date
           }
           fields {
             slug
           }
-          excerpt
-          html
         }
       }
     }

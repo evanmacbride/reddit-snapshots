@@ -7,9 +7,9 @@ import heapq as hq
 from post import Post
 
 # The maximum number of posts for each section of a snapshot
-SCI_TECH_LIMIT = 7
-DEV_LIMIT = 5
-FUN_LIMIT = 3
+SCI_TECH_LIMIT = 8
+DEV_LIMIT = 6
+FUN_LIMIT = 4
 
 # Get secrets from environment variables
 username = os.environ['YOUR_REDDIT_USERNAME']

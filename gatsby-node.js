@@ -36,3 +36,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+// Create blog post list pages
+const linksPerPage = 20;
+const numPages = Math.ceil(posts.length / linksPerPage);
+
+Array.from({ length: numPages }).forEach((_, i) => {
+  createPage({
+    path: i === 0 ? `/archive` : `/archive/${i + 1}`,
+    component: path.resolve('./src/templates/archive-template.js'),
+    context: {
+      limit: linksPerPage,
+      skip: i * linksPerPage,
+      numPages,
+      currentPage: i + 1
+    }
+  });
+});
