@@ -129,8 +129,6 @@ for resp,sectionTitle,limit in responses:
         p = Post(post,subData[postSubreddit])
         p.subSeen = subSeen
         hq.heappush(heap,p)
-        seenLinks.append(p.url)
-        seenAuthors.append(p.author)
     sectionList.append((heap,sectionTitle,limit))
 
 # Write the Markdown file by popping posts from the heaps and calling their
@@ -145,6 +143,8 @@ with open(mdFilename,'w',encoding='utf-8') as md:
             html = hq.heappop(heap).getHTML()
             md.write(html + "\n\n")
             postCount += 1
+            seenLinks.append(post.url)
+            seenAuthors.append(post.author)
             if postCount > limit:
                 break
     md.write("</ul>\n")
