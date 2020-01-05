@@ -15,8 +15,10 @@ class Post:
         self.subscribers = subscribers
         self.fixCrosspostLink(postData)
 
+    # If the post is a crosspost link to a post in another subreddit, change its
+    # url to a real address, not reddit's shorthand.
     def fixCrosspostLink(self,postData):
-        if (postData['data'].get('crosspost_parent_list')):
+        if (postData['data'].get('crosspost_parent_list') and ("http" not in self.url)):
             self.url = "https://www.reddit.com" + self.url
 
     def getAdjustedScore(self):

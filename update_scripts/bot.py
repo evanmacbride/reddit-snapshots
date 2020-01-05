@@ -80,6 +80,23 @@ funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers
 responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Developer", DEV_LIMIT),
     (funResponse, "Etcetera", FUN_LIMIT)]
 
+sectionList = []
+
+# Build the heap of posts. Push every post in each response. Worry about the
+# post limit for each section when writing the Markdown file, not when building
+# the heap. This way, the adjustedScore algorithm can produce a more interesting
+# selection of posts.
+for resp,sectionTitle,limit in responses:
+    heap = []
+    for post in resp.json()['data']['children']:
+        #subSeen = False
+        # Ignore stickied posts, NSFW posts, and spoilers
+        if (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']):
+            continue
+        p = Post(post)
+        hq.heappush(heap,p)
+    sectionList.append((heap,sectionTitle,limit))
+
 # If a featuredFile file exists, we'll use it to check if links have already
 # been posted. If the file doesn't exist, we'll create it. Then, we'll save
 # urls of links that have been posted to the website to make sure we're not
@@ -102,24 +119,6 @@ if featuredExists:
 seenAuthors = []
 seenSubreddits = []
 
-sectionList = []
-
-
-# Build the heap of posts. Push every post in each response. Worry about the
-# post limit for each section when writing the Markdown file, not when building
-# the heap. This way, the adjustedScore algorithm can produce a more interesting
-# selection of posts.
-for resp,sectionTitle,limit in responses:
-    heap = []
-    for post in resp.json()['data']['children']:
-        #subSeen = False
-        # Ignore stickied posts, NSFW posts, and spoilers
-        if (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']):
-            continue
-        p = Post(post)
-        hq.heappush(heap,p)
-    sectionList.append((heap,sectionTitle,limit))
-
 # Write the Markdown file by popping posts from the heaps and calling their
 # getHTML() functions.
 with open(mdFilename,'w',encoding='utf-8') as md:
@@ -135,10 +134,6 @@ with open(mdFilename,'w',encoding='utf-8') as md:
                 continue
             if (p.subreddit not in seenSubreddits):
                 seenSubreddits.append(p.subreddit)
-                #seenSubredditsResponse = requests.get("https://oauth.reddit.com/" +
-                #    "r/" + postSubreddit + "/about/", headers=headers)
-                #subscriberCount = seenSubredditsResponse.json()['data']['subscribers']
-                #seenSubreddits[postSubreddit] = subscriberCount
             # If this post's sub is already represented, mark it and push it
             # back to the heap. The next time it gets popped, it will be written
             # to the MD file.
