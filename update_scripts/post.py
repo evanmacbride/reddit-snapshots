@@ -1,6 +1,6 @@
 # Organize information from posts and get HTML for MD files.
 class Post:
-    def __init__(self, postData, subscribers):
+    def __init__(self, postData, subscribers=None):
         self.title = postData['data']['title']
         self.url = postData['data']['url']
         self.thumbnail = postData['data']['thumbnail']
@@ -11,6 +11,7 @@ class Post:
         self.subreddit = postData['data']['subreddit']
         self.score = postData['data']['score']
         self.subSeen = False
+        # Will default to None
         self.subscribers = subscribers
         self.fixCrosspostLink(postData)
 

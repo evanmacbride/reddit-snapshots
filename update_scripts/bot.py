@@ -100,9 +100,10 @@ if featuredExists:
 # user has posts in multiple snapshots, but I want to avoid multiple posts from
 # the same user within a single snapshot.
 seenAuthors = []
+seenSubreddits = []
 
 sectionList = []
-subData = {}
+
 
 # Build the heap of posts. Push every post in each response. Worry about the
 # post limit for each section when writing the Markdown file, not when building
@@ -111,20 +112,11 @@ subData = {}
 for resp,sectionTitle,limit in responses:
     heap = []
     for post in resp.json()['data']['children']:
-        subSeen = False
+        #subSeen = False
         # Ignore stickied posts, NSFW posts, and spoilers
         if (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']):
             continue
-        postSubreddit = post['data']['subreddit']
-        if not (subData.get(postSubreddit)):
-            subDataResponse = requests.get("https://oauth.reddit.com/" +
-                "r/" + postSubreddit + "/about/", headers=headers)
-            subscriberCount = subDataResponse.json()['data']['subscribers']
-            subData[postSubreddit] = subscriberCount
-        else:
-            subSeen = True
-        p = Post(post,subData[postSubreddit])
-        p.subSeen = subSeen
+        p = Post(post)
         hq.heappush(heap,p)
     sectionList.append((heap,sectionTitle,limit))
 
@@ -136,16 +128,31 @@ with open(mdFilename,'w',encoding='utf-8') as md:
     for heap,sectionTitle,limit in sectionList:
         postCount = 1
         md.write("<h2>" + sectionTitle + "</h2>" + "\n\n")
-        for post in heap:
-            # Ignore reposts, crossposts, and being overrun by powerusers
-            if (post.url in seenLinks or post.author in seenAuthors):
-                hq.heappop(heap)
+        for post in range(len(heap)):
+            # Ignore reposts and crossposts, and avoid being overrun by powerusers
+            p = hq.heappop(heap)
+            if (p.url in seenLinks or p.author in seenAuthors):
                 continue
-            html = hq.heappop(heap).getHTML()
+            if (p.subreddit not in seenSubreddits):
+                seenSubreddits.append(p.subreddit)
+                #seenSubredditsResponse = requests.get("https://oauth.reddit.com/" +
+                #    "r/" + postSubreddit + "/about/", headers=headers)
+                #subscriberCount = seenSubredditsResponse.json()['data']['subscribers']
+                #seenSubreddits[postSubreddit] = subscriberCount
+            # If this post's sub is already represented, mark it and push it
+            # back to the heap. The next time it gets popped, it will be written
+            # to the MD file.
+            elif (not p.subSeen):
+                p.subSeen = True
+                p.getAdjustedScore()
+                hq.heappush(heap,p)
+                continue
+
+            html = p.getHTML()
             md.write(html + "\n\n")
             postCount += 1
-            seenLinks.append(post.url)
-            seenAuthors.append(post.author)
+            seenLinks.append(p.url)
+            seenAuthors.append(p.author)
             if postCount > limit:
                 break
     md.write("</ul>\n")
