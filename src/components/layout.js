@@ -2,6 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
+import Footer from "../components/footer"
 
 export default ({ children }) => {
   const data = useStaticQuery(
@@ -16,62 +17,68 @@ export default ({ children }) => {
     `
   )
   return (
-    <div
-      css={css`
-        margin: 0 auto;
-        max-width: 610px;
-        padding-top: ${rhythm(0.5)};
-
-      `}
-    >
-      <nav
+    <div>
+      <div
         css={css`
-          background-color: #000000bd;
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: space-between;
-          margin-bottom: 2.5rem;
-          padding: 8px 5px;
+          margin: 0 auto;
+          max-width: 610px;
+          padding-top: ${rhythm(0.5)};
+
         `}
       >
-        <Link to={`/`}>
-          <h3
-            css={css`
-              color: #00d8d6;
-              margin-bottom: 0;
-            `}
-          >
-            {data.site.siteMetadata.title}
-          </h3>
-        </Link>
-        <span
+        <nav
           css={css`
+            background-color: #000000bd;
             display: flex;
             flex-flow: row wrap;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            padding: 8px 5px;
           `}
         >
-          <Link to={`/about`}>
+          <Link to={`/`}>
             <h3
               css={css`
+                color: #00d8d6;
                 margin-bottom: 0;
-                padding-right: 0.45em;
               `}
             >
-              About
+              {data.site.siteMetadata.title}
             </h3>
           </Link>
+          <span
+            css={css`
+              display: flex;
+              flex-flow: row wrap;
+            `}
+          >
           <Link to={`/archive`}>
             <h3
               css={css`
                 margin-bottom: 0;
+                padding-right: 0.58em;
               `}
             >
               Archive
             </h3>
           </Link>
-        </span>
-      </nav>
-      {children}
+            <Link to={`/about`}>
+              <h3
+                css={css`
+                  color: #d2dae2a8;
+                  margin-bottom: 0;
+                `}
+              >
+                About
+              </h3>
+            </Link>
+
+          </span>
+        </nav>
+        {children}
+      </div>
+      <Footer>
+      </Footer>
     </div>
     )
 }
