@@ -42,7 +42,7 @@ devSubs = [
     "cpp","python","linux"
 ]
 
-funSubs = ["softwaregore","geek","InternetIsBeautiful","alternativeart",
+funSubs = ["geek","InternetIsBeautiful","alternativeart",
     "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
     "retrofuturism"]
 
