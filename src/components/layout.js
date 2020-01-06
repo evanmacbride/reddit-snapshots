@@ -52,11 +52,15 @@ export default ({ children }) => {
               flex-flow: row wrap;
             `}
           >
-          <Link to={`/archive`}>
+          <Link to={`/archive`}
+            css={css`
+                margin-right: 0.58em;
+            `}
+          >
             <h3
               css={css`
+                color: #d2dae2a8;
                 margin-bottom: 0;
-                padding-right: 0.58em;
               `}
             >
               Archive
