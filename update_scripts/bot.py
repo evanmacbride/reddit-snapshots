@@ -8,7 +8,7 @@ from post import Post
 
 # The maximum number of posts for each section of a snapshot
 SCI_TECH_LIMIT = 8
-DEV_LIMIT = 6
+DEV_LIMIT = 4
 FUN_LIMIT = 4
 
 # Get secrets from environment variables
