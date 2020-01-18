@@ -46,6 +46,9 @@ funSubs = ["geek","InternetIsBeautiful","alternativeart",
     "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
     "retrofuturism"]
 
+# Filter out political posts
+filterWordList  = ["BIDEN","WARREN","SANDERS"]
+
 sciTechMulti = "r/"
 devMulti = "r/"
 funMulti = "r/"
@@ -92,6 +95,14 @@ for resp,sectionTitle,limit in responses:
         #subSeen = False
         # Ignore stickied posts, NSFW posts, and spoilers
         if (post['data']['stickied'] or post['data']['over_18'] or post['data']['spoiler']):
+            continue
+        # Check that the title doesn't contain words in the filter list
+        hitFilter = False
+        for word in filterWordList :
+            if word in post['data']['title'].upper():
+                hitFilter = True
+                break
+        if hitFilter:
             continue
         p = Post(post)
         hq.heappush(heap,p)
