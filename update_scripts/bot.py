@@ -31,7 +31,7 @@ access = response.json()['access_token']
 headers = {"Authorization": "bearer " + access, "User-Agent": agent}
 
 sciTechSubs = [
-    "technology","tech","raspberry_pi","hardware","hacking","3dprinting",
+    "technology","tech","raspberry_pi","hardware","hacking",
     "functionalprint","gadgets","netsec","buildapc","privacy","nasa",
     "compsci","space","environment","askscience","biology","futurology",
     "chemicalreactiongifs","naturewasmetal"
@@ -42,7 +42,7 @@ devSubs = [
     "cpp","python","linux"
 ]
 
-funSubs = ["geek","InternetIsBeautiful","alternativeart",
+funSubs = ["3dprinting","geek","InternetIsBeautiful","alternativeart",
     "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
     "retrofuturism"]
 
