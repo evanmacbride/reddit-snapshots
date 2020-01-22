@@ -46,8 +46,8 @@ funSubs = ["3dprinting","geek","InternetIsBeautiful","alternativeart",
     "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
     "retrofuturism"]
 
-# Filter out political posts
-filterWordList  = ["BIDEN","WARREN","SANDERS"]
+# Filter out political posts, "Happy Birthday" posts, cancer cure hype, etc.
+filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER"]
 
 sciTechMulti = "r/"
 devMulti = "r/"
@@ -112,17 +112,10 @@ for resp,sectionTitle,limit in responses:
 # been posted. If the file doesn't exist, we'll create it. Then, we'll save
 # urls of links that have been posted to the website to make sure we're not
 # posting the same link twice.
-#seenLinks = []
-#featuredExists = False
 prevFeatured = {}
 with open(jsonPath + "featured.json","r") as featuredFile:
     prevFeatured = json.load(featuredFile)
-    #featuredExists = True
     featuredFile.close()
-
-#if featuredExists:
-#    for url in prevFeatured['links']:
-#        seenLinks.append(url)
 
 # For each new snapshot, start a new seenAuthors list. It's OK if the same
 # user has posts in multiple snapshots, but I want to avoid multiple posts from
@@ -157,7 +150,6 @@ with open(mdFilename,'w',encoding='utf-8') as md:
             html = p.getHTML()
             md.write(html + "\n\n")
             postCount += 1
-            # I wanted to just use a set, but JSON objects are dicts.
             prevFeatured['links'][p.url] = None
             seenAuthors.append(p.author)
             if postCount > limit:
@@ -167,7 +159,5 @@ with open(mdFilename,'w',encoding='utf-8') as md:
 md.close()
 
 # Update featured.json with the seenLinks from this snapshot
-#linksDict = {"links":seenLinks}
 with open(jsonPath + "featured.json","w") as featuredFile:
     json.dump(prevFeatured,featuredFile)
-    #json.dump(linksDict,featuredFile)
