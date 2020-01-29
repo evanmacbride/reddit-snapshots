@@ -47,7 +47,8 @@ funSubs = ["3dprinting","geek","InternetIsBeautiful","alternativeart",
     "retrofuturism"]
 
 # Filter out political posts, "Happy Birthday" posts, cancer cure hype, etc.
-filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER"]
+filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER","ALZHEIMER",
+    "THUNBERG","ST TATTOO"]
 
 sciTechMulti = "r/"
 devMulti = "r/"
