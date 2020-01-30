@@ -2,26 +2,6 @@
 
 A semi-curated, automatically updated archive of top Reddit posts.
 
-## How is the site "semi-curated"?
-
-I choose the section themes, the subreddits that go into each section, and the
-special filtering conditions that fill each section with links. The specific
-links that are featured are determined by an automated process. I do not
-approve each link individually. I am actively updating the site's filters to get
-the best content possible.
-
-## How is the site updated?
-
-A set of bash scripts call a Python program ("bot.py") that queries the Reddit
-API and generates a Markdown file containing information (urls, authors,
-subreddits, etc.) on new top Reddit posts. These scripts create two of these
-"snapshots" each day. After its creation, the Markdown file is then committed to
-a GitHub repo for a GatsbyJS-based website which is then deployed to Netlify.
-
-The website is heavily based on the
-[Gatsby Hello World Starter](https://github.com/gatsbyjs/gatsby-starter-hello-world),
-but I've made (and will continue to make) numerous changes to the starter template.
-
 ## What is the site's purpose?
 
 Reddit has some good content, but it's often buried under reposts, tired jokes,
@@ -39,7 +19,7 @@ sorts them in.
 
 Each snapshot starts with the top posts from the past 24 hours for a list of
 subreddits. bot.py then removes
-* any link that's ever been featured in a snapshot (effectively banning reposts)
+* any link that's ever been featured in a previous snapshot (effectively banning reposts)
 * multiple links posted by the same author (an author will only have at most one
   link in each snapshot)
 * content flagged as NSFW or containing spoilers
@@ -61,3 +41,23 @@ back onto the heap. If the link makes it to the top of the heap again (before
 all the limited spots in the snapshot are filled), bot.py will detect that the
 link's score has already been reduced (by checking a Boolean), and the link will
 finally be added to the snapshot.
+
+## How is the site updated?
+
+A set of bash scripts call a Python program ("bot.py") that queries the Reddit
+API and generates a Markdown file containing information (urls, authors,
+subreddits, etc.) on new top Reddit posts. These scripts create two of these
+"snapshots" each day. After its creation, the Markdown file is then committed to
+a GitHub repo for a GatsbyJS-based website which is then deployed to Netlify.
+
+The website is heavily based on the
+[Gatsby Hello World Starter](https://github.com/gatsbyjs/gatsby-starter-hello-world),
+but I've made (and will continue to make) numerous changes to the starter template.
+
+## How is the site "semi-curated"?
+
+I choose the section themes, the subreddits that go into each section, and the
+special filtering conditions that fill each section with links. The specific
+links that are featured are determined by an automated process. I do not
+approve each link individually. I am actively updating the site's filters to get
+the best content possible.
