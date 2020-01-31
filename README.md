@@ -61,3 +61,11 @@ special filtering conditions that fill each section with links. The specific
 links that are featured are determined by an automated process. I do not
 approve each link individually. I am actively updating the site's filters to get
 the best content possible.
+
+## Disclaimer
+
+Reddit Snapshots is in no way affiliated with Reddit, Inc. or any parent or
+subsidiary companies. Some material appearing on Reddit Snapshots may be
+protected under copyright. Any such material is presented under the doctrine of
+Fair Use. The underlying design and software of Reddit Snapshots is released
+under the MIT License.
