@@ -104,14 +104,15 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     marginLeft: '0',
     paddingLeft: '0',
   },
-  'article > h1, h3, p': {
+  'article > h1, article > h3, article > p': {
     padding: '0 5px 0 5px',
   },
   '.articleText': {
     maxWidth: '468px',
   },
-  '.articleText > p': {
-    color: '#d2dae2a8',
+  '.articleText p': {
+    color: '#d2dae2e4',
+    padding: '0 5px 0 5px',
   },
   'p > ul': {
     listStyle: 'disc',

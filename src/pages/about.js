@@ -1,5 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby";
+import { css } from "@emotion/core"
+import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 
 export default ({ data }) => (
@@ -7,13 +9,19 @@ export default ({ data }) => (
     <article>
       <h1>About {data.site.siteMetadata.title}</h1>
 
-      <h3>A semi-curated, automatically updated archive of top Reddit posts</h3>
+      <h3
+        css={css`
+          color: #d2dae2a8;
+      `}>A semi-curated, automatically updated archive of top Reddit posts</h3>
 
-      <h2>What is the site's purpose?</h2>
+      <h2
+      css={css`
+        border-top: none;
+      `}>The site's purpose</h2>
       <div className="articleText">
         <p>
           Reddit has some good content, but it's often buried under reposts, tired jokes,
-          and other not-good content. I wanted to make something that would only present
+          and other not very good content. I wanted to make something that would only present
           the best, most meaningful content from each section of Reddit that I was
           interested in, while filtering out as much garbage as possible.
         </p>
@@ -22,7 +30,7 @@ export default ({ data }) => (
           into a layout that's somewhat reminiscent of a traditional news website. So each
           snapshot's links are organized into sections (currently Sci/Tech, Developer, and
           "Etcetera") instead of appearing in whatever order Reddit's opaque algorithm
-          sorts them in.
+          sorts them.
         </p>
         <h2>How are links filtered?</h2>
         <p>
@@ -65,25 +73,36 @@ export default ({ data }) => (
           a GitHub repo for a GatsbyJS-based website which is then deployed to Netlify.
         </p>
         <p>
-          The website is heavily based on the <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">
+          The website is heavily based on the <a
+          css={css`
+            color: #00d8d6;
+            `}
+            href="https://github.com/gatsbyjs/gatsby-starter-hello-world"
+          >
           Gatsby Hello World Starter</a>,
           but I've made (and will continue to make) numerous changes to the starter template.
         </p>
-        <h2>How is the site "semi-curated"?</h2>
+        <h2>What does "semi-curated" mean?</h2>
         <p>
           I choose the section themes, the subreddits that go into each section, and the
           special filtering conditions that fill each section with links. The specific
           links that are featured are determined by an automated process. I do not
-          approve each link individually. I am actively updating the site's filters to get
-          the best content possible.
+          approve each link individually, but I am actively updating the site's
+          filters to get the best content possible.
         </p>
         <h2>Disclaimer</h2>
-        <p>
-          Reddit Snapshots is in no way affiliated with Reddit, Inc. or any parent or
-          subsidiary companies. Some material appearing on Reddit Snapshots may be
-          protected under copyright. Any such material is presented under the doctrine of
-          Fair Use. The underlying design and software of Reddit Snapshots is released
-          under the MIT License.
+        <p
+          css={css`
+            margin-bottom: ${rhythm(1.618)};
+          `}
+        >
+          Reddit Snapshots ("this website") is in no way affiliated with Reddit,
+          Inc. or any parent or subsidiary companies. Any opinions or views expressed in links featured
+          on this website belong to the respective authors of those links, and they
+          are not necessarily shared by this website's author. Some material appearing
+          on Reddit Snapshots may be protected under copyright. Any such material
+          is presented on this website under the doctrine of Fair Use. The underlying
+          design and software of this website is released under the MIT License.
         </p>
       </div>
     </article>
