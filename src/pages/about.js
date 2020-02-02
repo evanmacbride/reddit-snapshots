@@ -78,8 +78,7 @@ export default ({ data }) => (
           a GitHub repo for a GatsbyJS-based website which is then deployed to Netlify.
         </p>
         <p>
-          The website is heavily based on the
-          <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">
+          The website is heavily based on the <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">
             Gatsby Hello World Starter
           </a>,
           but I've made (and will continue to make) numerous changes to the starter template.
