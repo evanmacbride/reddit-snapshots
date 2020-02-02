@@ -14,11 +14,16 @@ export default ({ data }) => (
           color: #d2dae2a8;
       `}>A semi-curated, automatically updated archive of top Reddit posts</h3>
 
-      <h2
-      css={css`
-        border-top: none;
-      `}>The site's purpose</h2>
+
       <div className="articleText">
+        <p>
+          Reddit Snapshots is the work of Evan MacBride
+          (<a href="https://reddit.com/user/evnbd">u/evnbd</a>). Find the <a href="https://github.com/evanmacbride/reddit-snapshots">GitHub repo here</a>.
+        </p>
+        <h2
+          css={css`
+            border-top: none;
+        `}>The site's purpose</h2>
         <p>
           Reddit has some good content, but it's often buried under reposts, tired jokes,
           and other not very good content. I wanted to make something that would only present
@@ -73,13 +78,10 @@ export default ({ data }) => (
           a GitHub repo for a GatsbyJS-based website which is then deployed to Netlify.
         </p>
         <p>
-          The website is heavily based on the <a
-          css={css`
-            color: #00d8d6;
-            `}
-            href="https://github.com/gatsbyjs/gatsby-starter-hello-world"
-          >
-          Gatsby Hello World Starter</a>,
+          The website is heavily based on the
+          <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">
+            Gatsby Hello World Starter
+          </a>,
           but I've made (and will continue to make) numerous changes to the starter template.
         </p>
         <h2>What does "semi-curated" mean?</h2>

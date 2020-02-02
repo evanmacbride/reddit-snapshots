@@ -10,7 +10,7 @@ export default ({ data }) => {
     <Layout>
       <div
         css={css`
-          margin: auto;
+          margin: auto auto ${rhythm(1.382)} auto;
           max-width: 610px;
         `}>
         <header
@@ -21,7 +21,7 @@ export default ({ data }) => {
           <h1
             css={css`
               display: inline-block;
-              margin-bottom: ${rhythm(0.618)};
+              margin-bottom: ${rhythm(1)};
             `}
           >
             Snapshot Archive
@@ -36,7 +36,8 @@ export default ({ data }) => {
             `}>
               <p
                 css={css`
-                  margin-bottom: ${rhythm(1)};
+                  margin-bottom: ${rhythm(0.618)};
+                  padding-left: 5px;
                 `}
               >
                 {node.frontmatter.title}
@@ -52,7 +53,7 @@ export const query = graphql`
   query {
     allMarkdownRemark (sort: {
       fields: [frontmatter___date],
-      order: DESC}, limit: 20, skip: 0) {
+      order: DESC}, limit: 30, skip: 0) {
       edges {
         node {
           id

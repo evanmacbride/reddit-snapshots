@@ -100,7 +100,7 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     backgroundColor: '#0008',
     fill: '#d2dae2',
   },
-  'section ul': {
+  'ul': {
     marginLeft: '0',
     paddingLeft: '0',
   },
@@ -117,6 +117,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   '.articleText li': {
     display: 'list-item',
     marginLeft: '1.5em',
+  },
+  '.articleText a': {
+    color: '#00d8d6',
   },
   'p > ul': {
     listStyle: 'circle',
