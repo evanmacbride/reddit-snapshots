@@ -43,7 +43,8 @@ export default ({ data }) => {
               css={css`
                 color: #00d8d6;
                 margin-bottom: ${rhythm(1.618)};
-                padding-left: 5px;
+                padding: 0 5px 0 5px;
+                text-align: right;
               `}>Previous Snapshot
             </h3>
           </Link>

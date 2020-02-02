@@ -89,9 +89,6 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     padding: '2px 4px 0 6px',
     width: '100%',
   },
-  //'li:first-of-type > div': {
-  //  borderTop: 'none',
-  //},
   '.linkTitle': {
     fontWeight: 700,
     fontSize: '1rem',
@@ -103,6 +100,9 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
   'ul': {
     marginLeft: '0',
     paddingLeft: '0',
+  },
+  'section ul': {
+    marginBottom: '0',
   },
   'article > h1, article > h3, article > p': {
     padding: '0 5px 0 5px',
