@@ -30,37 +30,27 @@ access = response.json()['access_token']
 # Now, query the API
 headers = {"Authorization": "bearer " + access, "User-Agent": agent}
 
-sciTechSubs = [
-    "technology","tech","raspberry_pi","hardware","hacking",
-    "functionalprint","gadgets","netsec","buildapc","privacy","nasa",
-    "compsci","space","environment","askscience","biology","futurology",
-    "chemicalreactiongifs","naturewasmetal"
-]
-
-devSubs = [
-    "programming","webdev","frontend","coding","web_design","javascript","css",
-    "cpp","python","linux"
-]
-
-funSubs = ["3dprinting","geek","InternetIsBeautiful","alternativeart",
-    "PixelArt","VHScoverART","itsaunixsystem","Thatsabooklight","scifi",
-    "retrofuturism"]
-
 # Filter out political posts, "Happy Birthday" posts, cancer cure hype, etc.
 filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER","ALZHEIMER",
     "THUNBERG","ST TATTOO"]
+
+# Get subreddits from subreddits.json
+subs = {}
+with open(jsonPath + "subreddits.json","r") as subFile:
+    subs = json.load(subFile)
+    subFile.close()
 
 sciTechMulti = "r/"
 devMulti = "r/"
 funMulti = "r/"
 
-for sub in sciTechSubs:
+for sub in subs["subreddits"]["sciTech"]:
     sciTechMulti += sub + "+"
 
-for sub in devSubs:
+for sub in subs["subreddits"]["dev"]:
     devMulti += sub + "+"
 
-for sub in funSubs:
+for sub in subs["subreddits"]["fun"]:
     funMulti += sub + "+"
 
 # Cut off last + symbol
