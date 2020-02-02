@@ -31,11 +31,18 @@ export default ({ children }) => {
     >
       <section
         css={css`
-          margin: 0 auto;
-          max-width: 610px;
+
         `}
       >
-        {data.site.siteMetadata.title}
+        <h3
+          css={css`
+            color: #d2dae2e4;
+            margin: 0 auto;
+            max-width: 610px;
+            padding: 0 5px 0 5px;
+          `}>
+          {data.site.siteMetadata.title}
+        </h3>
       </section>
     </footer>
       {children}

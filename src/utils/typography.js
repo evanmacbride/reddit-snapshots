@@ -114,8 +114,12 @@ const overrideStyles = ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     color: '#d2dae2e4',
     padding: '0 5px 0 5px',
   },
+  '.articleText li': {
+    display: 'list-item',
+    marginLeft: '1.5em',
+  },
   'p > ul': {
-    listStyle: 'disc',
+    listStyle: 'circle',
   }
 })
 
