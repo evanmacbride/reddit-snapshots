@@ -34,12 +34,19 @@ export default ({ data }) => {
             >{data.allMarkdownRemark.edges[0].node.frontmatter.title}</h3>
           </header>
           <section>
-            <div
-              css={css`
-                margin-bottom: ${rhythm(2)};
-              `}
-              dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
+            <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.edges[0].node.html }} />
           </section>
+          <Link
+            to={data.allMarkdownRemark.edges[1].node.fields.slug}
+          >
+            <h3
+              css={css`
+                color: #00d8d6;
+                margin-bottom: ${rhythm(1.618)};
+                padding-left: 5px;
+              `}>Previous Snapshot
+            </h3>
+          </Link>
       </div>
     </Layout>
   )

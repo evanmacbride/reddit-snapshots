@@ -9,7 +9,7 @@ export default ({ data }) => {
     <Layout>
       <div
         css={css`
-          margin: auto;
+          margin: auto auto ${rhythm(1.618)} auto;
           max-width: 610px;
         `}>
         <header
