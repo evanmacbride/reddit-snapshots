@@ -29,7 +29,7 @@ class Post:
         # If a post's subreddit is already represented, reduce its adjusted
         # score by an order of magnitude.
         if self.subSeen == True:
-            adjustedScore = adjustedScore / 5
+            adjustedScore = adjustedScore / 4
         return adjustedScore
 
     def __lt__(self, other):
