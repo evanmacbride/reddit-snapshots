@@ -123,9 +123,14 @@ with open(mdFilename,'w',encoding='utf-8') as md:
         postCount = 1
         md.write("<h2>" + sectionTitle + "</h2>" + "\n\n")
         for post in range(len(heap)):
-            # Ignore reposts and crossposts, and avoid being overrun by powerusers
+            # Ignore reposts and crossposts, and avoid being overrun by
+            # powerusers. As of 2/8/20, featured.json still contains many urls
+            # with query strings, but from now on it will only be filled with
+            # queryless urls. When checking reposts, check for both the real
+            # url and the the urls without the query string.
             p = hq.heappop(heap)
-            if (p.url in prevFeatured['links'] or p.author in seenAuthors):
+            if (p.url in prevFeatured['links'] or p.author in seenAuthors or
+                p.getQuerylessUrl() in prevFeatured['links']):
                 continue
             if (p.subreddit not in seenSubreddits):
                 seenSubreddits.append(p.subreddit)
@@ -141,7 +146,10 @@ with open(mdFilename,'w',encoding='utf-8') as md:
             html = p.getHTML()
             md.write(html + "\n\n")
             postCount += 1
-            prevFeatured['links'][p.url] = None
+            # Use the url without the query string to avoid reposting this link
+            # in the future. The same link may have different query strings
+            # depending on who posts it, how they navigated to the url, etc.
+            prevFeatured['links'][p.getQuerylessUrl()] = None
             seenAuthors.append(p.author)
             if postCount > limit:
                 break

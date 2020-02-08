@@ -1,3 +1,5 @@
+import re
+
 # Organize information from posts and get HTML for MD files.
 class Post:
     def __init__(self, postData, subscribers=None):
@@ -21,10 +23,15 @@ class Post:
         if (postData['data'].get('crosspost_parent_list') and ("http" not in self.url)):
             self.url = "https://www.reddit.com" + self.url
 
+    # Use the url without the query string to check for reposts, since the same
+    # link will often have a different query string if posted by different
+    # authors, or if the url was navigated to differently, etc.
+    def getQuerylessUrl(self):
+        return re.split('\?|#',self.url)[0]
+
     def getAdjustedScore(self):
         # Convert to negative number so larger adjusted scores are pushed from
         # the heap first.
-        #adjustedScore = -((self.score + self.comments)**2) / self.subscribers
         adjustedScore = -self.score
         # If a post's subreddit is already represented, reduce its adjusted
         # score by an order of magnitude.
