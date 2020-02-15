@@ -34,7 +34,7 @@ class Post:
         # the heap first.
         adjustedScore = -self.score
         # If a post's subreddit is already represented, reduce its adjusted
-        # score by an order of magnitude.
+        # score by a constant.
         if self.subSeen == True:
             adjustedScore = adjustedScore / 3
         return adjustedScore
