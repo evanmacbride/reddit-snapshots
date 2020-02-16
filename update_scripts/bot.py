@@ -32,7 +32,8 @@ headers = {"Authorization": "bearer " + access, "User-Agent": agent}
 
 # Filter out political posts, "Happy Birthday" posts, cancer cure hype, etc.
 filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER","ALZHEIMER",
-    "THUNBERG","ST TATTOO", "[META]", "[ META ]", "[RANT]", "[ RANT ]"]
+    "THUNBERG","ST TATTOO", "[META]", "[ META ]", "[RANT]", "[ RANT ]",
+    "BERNIE"]
 
 # Get subreddits from subreddits.json
 subs = {}
