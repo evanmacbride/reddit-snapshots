@@ -9,6 +9,7 @@ from post import Post
 # The maximum number of posts for each section of a snapshot
 SCI_TECH_LIMIT = 8
 DEV_LIMIT = 4
+ARTS_LIMIT = 4
 FUN_LIMIT = 4
 
 # Get secrets from environment variables
@@ -43,6 +44,7 @@ with open(jsonPath + "subreddits.json","r") as subFile:
 
 sciTechMulti = "r/"
 devMulti = "r/"
+artsMulti = "r/"
 funMulti = "r/"
 
 for sub in subs["subreddits"]["sciTech"]:
@@ -50,6 +52,9 @@ for sub in subs["subreddits"]["sciTech"]:
 
 for sub in subs["subreddits"]["dev"]:
     devMulti += sub + "+"
+
+for sub in subs["subreddits"]["arts"]:
+    artsMulti += sub + "+"
 
 for sub in subs["subreddits"]["fun"]:
     funMulti += sub + "+"
@@ -59,6 +64,8 @@ sciTechMulti = sciTechMulti[:-1]
 sciTechTop = sciTechMulti + "/top?t=day"
 devMulti = devMulti[:-1]
 devTop = devMulti + "/top?t=day"
+artsMulti = artsMulti[:-1]
+artsTop = artsMulti + "/top?t=day"
 funMulti = funMulti[:-1]
 funTop = funMulti + "/top?t=day"
 
@@ -70,10 +77,11 @@ mdFilename = postPath + now + "-post.md"
 # TODO: Keep trying if response status is not 200
 sciTechResponse = requests.get("https://oauth.reddit.com/" + sciTechTop, headers=headers)
 devResponse = requests.get("https://oauth.reddit.com/" + devTop, headers=headers)
+artsResponse = requests.get("https://oauth.reddit.com/" + artsTop, headers=headers)
 funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers)
 
 responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Developer", DEV_LIMIT),
-    (funResponse, "Etcetera", FUN_LIMIT)]
+    (artsResponse,"Arts & Crafts", ARTS_LIMIT), (funResponse, "Etcetera", FUN_LIMIT)]
 
 sectionList = []
 

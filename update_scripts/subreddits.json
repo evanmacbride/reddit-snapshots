@@ -1,8 +1,12 @@
-{"subreddits": {"sciTech": ["technology","tech","raspberry_pi","hardware",
-    "hacking", "functionalprint","gadgets","netsec","buildapc","privacy","nasa",
-    "compsci","space","environment","askscience","biology","futurology",
-    "chemicalreactiongifs","naturewasmetal"],"dev": ["programming","webdev",
-    "frontend","coding","web_design","javascript","css",
-    "cpp","python","linux"],"fun":["3dprinting","ObscureMedia","InternetIsBeautiful",
-    "alternativeart","PixelArt","VHScoverART","itsaunixsystem",
-    "Thatsabooklight","scifi","retrofuturism"]}}
+{"subreddits": {
+    "sciTech": ["technology","tech","hardware",
+      "hacking","gadgets","netsec","buildapc","privacy","nasa",
+      "compsci","space","environment","askscience","biology","futurology",
+      "chemicalreactiongifs","naturewasmetal"],
+    "dev": ["programming","webdev",
+      "frontend","coding","web_design","javascript","css",
+      "cpp","python","linux"],
+    "arts":["3dprinting","alternativeart","PixelArt","VHScoverART",
+      "raspberry_pi","functionalprint"],
+    "fun":["ObscureMedia","InternetIsBeautiful",
+      "itsaunixsystem","Thatsabooklight","scifi","retrofuturism"],}}
