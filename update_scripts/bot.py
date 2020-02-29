@@ -7,10 +7,9 @@ import heapq as hq
 from post import Post
 
 # The maximum number of posts for each section of a snapshot
-SCI_TECH_LIMIT = 5
-DEV_LIMIT = 3
-ARTS_LIMIT = 3
-FUN_LIMIT = 3
+SCI_TECH_LIMIT = 6
+DEV_LIMIT = 4
+FUN_LIMIT = 4
 
 # Get secrets from environment variables
 username = os.environ['YOUR_REDDIT_USERNAME']
@@ -34,7 +33,7 @@ headers = {"Authorization": "bearer " + access, "User-Agent": agent}
 # Filter out political posts, "Happy Birthday" posts, cancer cure hype, etc.
 filterWordList  = ["BIDEN","WARREN","SANDERS","BIRTHDAY","CANCER","ALZHEIMER",
     "THUNBERG","ST TATTOO", "[META]", "[ META ]", "[RANT]", "[ RANT ]",
-    "BERNIE", "LEGO"]
+    "BERNIE", "LEGO","SUBREDDIT"]
 
 # Get subreddits from subreddits.json
 subs = {}
@@ -53,9 +52,6 @@ for sub in subs["subreddits"]["sciTech"]:
 for sub in subs["subreddits"]["dev"]:
     devMulti += sub + "+"
 
-for sub in subs["subreddits"]["arts"]:
-    artsMulti += sub + "+"
-
 for sub in subs["subreddits"]["fun"]:
     funMulti += sub + "+"
 
@@ -64,8 +60,6 @@ sciTechMulti = sciTechMulti[:-1]
 sciTechTop = sciTechMulti + "/top?t=day"
 devMulti = devMulti[:-1]
 devTop = devMulti + "/top?t=day"
-artsMulti = artsMulti[:-1]
-artsTop = artsMulti + "/top?t=day"
 funMulti = funMulti[:-1]
 funTop = funMulti + "/top?t=day"
 
@@ -77,11 +71,10 @@ mdFilename = postPath + now + "-post.md"
 # TODO: Keep trying if response status is not 200
 sciTechResponse = requests.get("https://oauth.reddit.com/" + sciTechTop, headers=headers)
 devResponse = requests.get("https://oauth.reddit.com/" + devTop, headers=headers)
-artsResponse = requests.get("https://oauth.reddit.com/" + artsTop, headers=headers)
 funResponse = requests.get("https://oauth.reddit.com/" + funTop, headers=headers)
 
-responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Developer", DEV_LIMIT),
-    (artsResponse,"Arts & Crafts", ARTS_LIMIT), (funResponse, "Etcetera", FUN_LIMIT)]
+responses = [(sciTechResponse, "Sci/Tech", SCI_TECH_LIMIT), (devResponse, "Maker", DEV_LIMIT),
+    (funResponse, "Etcetera", FUN_LIMIT)]
 
 sectionList = []
 
